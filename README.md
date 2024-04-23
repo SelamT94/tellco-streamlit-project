@@ -1,0 +1,2 @@
+# Tellco Streamlit Project\n\nThis project showcases data analysis findings from Tellco company files using Streamlit.\n\n## Setup Instructions\n\n1. Install Python dependencies:\n   \n2. Run the Streamlit app:\n   
+# Tellco Streamlit Project\n\nThis project showcases data analysis findings from Tellco company files using Streamlit.\n\n## Setup Instructions\n\n1. Install Python dependencies:\n   ```\n   pip install -r requirements.txt\n   ```\n2. Run the Streamlit app:\n   ```\n   streamlit run src/app.py\n   ```

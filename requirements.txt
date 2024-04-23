@@ -1,0 +1,1 @@
+# Add Python dependencies here\n# Example: pandas==1.3.0\nstreamlit==0.91.1
