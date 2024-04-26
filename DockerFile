@@ -1,0 +1,15 @@
+FROM python:3.8
+
+WORKDIR /app
+
+COPY setup.py src/ /app/
+
+RUN pip install .
+
+COPY notebook/ /app/notebook/
+
+RUN pip install notebook pandas matplotlib
+
+COPY src/*.py /app/src/
+
+CMD [ "jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root" ]
