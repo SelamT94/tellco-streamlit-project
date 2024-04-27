@@ -2,14 +2,19 @@ FROM python:3.8
 
 WORKDIR /app
 
-COPY setup.py src/ /app/
+COPY setup.sh .
+RUN chmod +x setup.sh && ./setup.sh
 
-RUN pip install .
+COPY setup.py requirements.txt ./
+RUN pip install . && \
+    pip install --no-cache-dir -r requirements.txt
 
-COPY notebook/ /app/notebook/
+COPY . .
 
 RUN pip install notebook pandas matplotlib
-
 COPY src/*.py /app/src/
+COPY notebook/ /app/notebook/
 
-CMD [ "jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root" ]
+EXPOSE 8501
+
+CMD ["streamlit", "run", "app.py"]
