@@ -37,6 +37,11 @@ def assign_experience_score(user_data, cluster_data):
     experience_scores = distances[:, worst_experience_cluster_index]
     return experience_scores
 
+def get_top_satisfied_customers(data, n=10):
+    data['Satisfaction Score'] = (data['Engagement Score'] + data['Experience Score']) / 2
+    sorted_data = data.sort_values(by='Satisfaction Score', ascending=False)
+    top_satisfied_customers = sorted_data.head(n)
+    return top_satisfied_customers
 
 
 
@@ -67,6 +72,11 @@ def main():
     user_data_with_scores['Experience Score'] = experience_scores
     
     user_data_with_scores.to_csv("results/user_data_with_scores.csv", index=False)
+
+   
+    top_10_satisfied_customers = get_top_satisfied_customers(user_data_with_scores, n=10)
+    print("Top 10 Satisfied Customers:")
+    print(top_10_satisfied_customers)
 
 if __name__ == "__main__":
     main()
